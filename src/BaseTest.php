@@ -10,8 +10,9 @@ class BaseTest extends TestCase
     protected function isProtected($method, $route, $request = [])
     {
         if (Auth::check()) {
-            Auth::guard('web')->forgetUser();
-            Auth::guard('sanctum')->forgetUser();
+            foreach (config('auth.guards') as $guardName => $guardConfig) {
+                Auth::guard($guardName)->forget();
+            }
         }
         $this->assertGuest();
 
