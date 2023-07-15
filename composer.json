@@ -1,0 +1,22 @@
+{
+    "name": "aluisio-pires/laravel-base-test",
+    "autoload": {
+        "psr-4": {
+            "AluisioPires\\LaravelBaseTest\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AluisioPires\\LaravelBaseTest\\LaravelBaseTestServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Aluisio Pires",
+            "email": "aluisiopireseng@gmail.com"
+        }
+    ],
+    "require": {}
+}
