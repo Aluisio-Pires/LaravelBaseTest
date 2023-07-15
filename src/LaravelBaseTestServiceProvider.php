@@ -9,8 +9,7 @@ class LaravelBaseTestServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('laravel-base-test', function ($app) {
-            $traits = (Array) config('app.base_test_traits', []);
-            return new BaseTest($traits);
+            return new BaseTest();
         });
     }
 }
