@@ -38,9 +38,11 @@ class BaseTest extends TestCase
         return $response;
     }
 
-    protected function simpleTest($method, $route, $status = 200, $request = [], $user = null)
+    protected function simpleTest($method, $route, $status = 200, $request = [], $user = null, $protected = true)
     {
-        $this->isProtected($method, $route, $request);
+        if ($protected){
+            $this->isProtected($method, $route, $request);
+        }
         return $this->simpleRequest($method, $route, $status, $request, $user);
     }
 }
