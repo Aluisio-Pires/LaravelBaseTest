@@ -7,6 +7,52 @@ use Tests\TestCase;
 
 class BaseTest extends TestCase
 {
+    public function __construct($traits = [])
+    {
+        $this->setUpBaseTraits($traits);
+        parent::__construct();
+    }
+
+    protected function setUpBaseTraits($traits = [])
+    {
+        if (isset($traits['RefreshDatabase'])) {
+            $this->refreshDatabase();
+        }
+
+        if (isset($traits['DatabaseMigrations'])) {
+            $this->runDatabaseMigrations();
+        }
+
+        if (isset($traits['DatabaseTruncation'])) {
+            $this->truncateDatabaseTables();
+        }
+
+        if (isset($traits['DatabaseTransactions'])) {
+            $this->beginDatabaseTransaction();
+        }
+
+        if (isset($traits['WithoutMiddleware'])) {
+            $this->disableMiddlewareForAllTests();
+        }
+
+        if (isset($traits['WithoutEvents'])) {
+            $this->disableEventsForAllTests();
+        }
+
+        if (isset($traits['WithFaker'])) {
+            $this->setUpFaker();
+        }
+
+        foreach ($traits as $trait) {
+            if (method_exists($this, $method = 'setUp'.class_basename($trait))) {
+                $this->{$method}();
+            }
+        }
+
+        return $traits;
+    }
+
+
     protected function isProtected($method, $route, $request = [])
     {
         if (Auth::check()) {
