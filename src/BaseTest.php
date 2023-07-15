@@ -11,7 +11,10 @@ class BaseTest extends TestCase
     {
         if (Auth::check()) {
             foreach (config('auth.guards') as $guardName => $guardConfig) {
-                Auth::guard($guardName)->forget();
+                $guard = Auth::guard($guardName);
+                if (method_exists($guard, 'forgetUser')) {
+                    $guard->forgetUser();
+                }
             }
         }
         $this->assertGuest();
