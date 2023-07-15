@@ -1,5 +1,6 @@
 {
     "name": "aluisio-pires/laravel-base-test",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "AluisioPires\\LaravelBaseTest\\": "src/"
