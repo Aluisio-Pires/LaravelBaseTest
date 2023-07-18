@@ -15,10 +15,6 @@
     "require": {
         "laravel/framework": "^8|^9|^10"
     },
-    "require-dev": {
-        "laravel/sanctum": "^3.0",
-        "phpunit/phpunit": "^9.3"
-    },
     "autoload": {
         "psr-4": {
             "AluisioPires\\LaravelBaseTest\\": "src/"
