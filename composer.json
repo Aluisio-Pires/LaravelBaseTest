@@ -1,18 +1,10 @@
 {
     "name": "aluisio-pires/laravel-base-test",
+    "description": "Base Test for your Laravel feature tests.",
     "license": "MIT",
-    "version": "1.0.0",
-    "autoload": {
-        "psr-4": {
-            "AluisioPires\\LaravelBaseTest\\": "src/"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "AluisioPires\\LaravelBaseTest\\LaravelBaseTestServiceProvider"
-            ]
-        }
+    "support": {
+        "issues": "https://github.com/Aluisio-Pires/LaravelBaseTest/issues",
+        "source": "https://github.com/Aluisio-Pires/LaravelBaseTest"
     },
     "authors": [
         {
@@ -22,5 +14,14 @@
     ],
     "require": {
         "laravel/framework": "^8|^9|^10"
+    },
+    "require-dev": {
+        "laravel/sanctum": "^3.0",
+        "phpunit/phpunit": "^9.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "AluisioPires\\LaravelBaseTest\\": "src/"
+        }
     }
 }
