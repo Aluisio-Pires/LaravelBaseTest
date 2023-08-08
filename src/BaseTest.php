@@ -28,7 +28,7 @@ class BaseTest extends TestCase
         $response->assertStatus(401);
     }
 
-    protected function simpleRequest($method, $route, $status = 200, $request = [], $headers = [], $user = null)
+    protected function simpleRequest($method, $route, int $status = 200, $request = [], User|null $user = null, $headers = [])
     {
         $user = $user ?: User::factory()->create();
         $response = $this->actingAs($user)->withHeaders($headers)->json(
@@ -44,11 +44,11 @@ class BaseTest extends TestCase
         return $response;
     }
 
-    protected function simpleTest($method, $route, $status = 200, $request = [], $headers = [], $user = null, $protected = true)
+    protected function simpleTest($method, $route, int $status = 200, $request = [], User|null $user = null, $protected = true, $headers = [])
     {
         if ($protected) {
             $this->isProtected($method, $route, $request);
         }
-        return $this->simpleRequest($method, $route, $status, $request, $headers, $user);
+        return $this->simpleRequest($method, $route, $status, $request, $user, $headers);
     }
 }
